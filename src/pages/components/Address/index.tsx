@@ -12,9 +12,7 @@ const AddressPage = () => {
         state: "",
         zip: "",
         phone: "",
-        email: "",
-        date: "",
-        time: ""
+        email: ""
     });
     const [loading, setLoading] = useState(false);
     const [razorpayLoaded, setRazorpayLoaded] = useState(false);
@@ -42,7 +40,7 @@ const AddressPage = () => {
     }, []);
 
     const validateForm = () => {
-        const requiredFields = ["name", "street", "city", "state", "zip", "phone", "email", "date", "time"];
+        const requiredFields = ["name", "street", "city", "state", "zip", "phone", "email"];
         for (const field of requiredFields) {
             if (!formData[field as keyof typeof formData]) {
                 return false; // Return false if any required field is empty
@@ -222,34 +220,6 @@ const AddressPage = () => {
                                 value={formData.phone}
                                 onChange={handleChange}
                                 placeholder="9876543210"
-                                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
-                                required
-                            />
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label htmlFor="date" className="block text-sm font-medium text-gray-700">Service Date</label>
-                            <input
-                                type="date"
-                                id="date"
-                                name="date"
-                                value={formData.date}
-                                onChange={handleChange}
-                                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
-                                required
-                                min={new Date().toISOString().split('T')[0]}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="time" className="block text-sm font-medium text-gray-700">Service Time</label>
-                            <input
-                                type="time"
-                                id="time"
-                                name="time"
-                                value={formData.time}
-                                onChange={handleChange}
                                 className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm p-2"
                                 required
                             />
